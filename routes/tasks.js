@@ -12,9 +12,15 @@ const {
 
 /* /api/task */
 
-router.route("/").get(list).post(store);
-router.route("/:id").get(detail).put(update).delete(remove);
 router
-  .post("/change-state/:id", changeState)
+  .route("/")
+    .get(list)
+    .post(store);
+router
+  .route("/:id")
+    .get(detail)
+    .put(update)
+    .delete(remove);
+router.post("/change-state/:id", changeState);
 
 module.exports = router;

@@ -27,7 +27,7 @@ module.exports = {
 
         const {name, description, client} = req.body;
 
-        if ([name, description, client].includes("") || !name || !description || !client)  throw createError(400, "Todos los campos son obligatorios");
+        if ([name, description, client].includes("") || !name || !description || !client)  throw createError(400, "El nombre, la descripción y el cliente son datos obligatorios");
 
         if (!req.user) throw createError(401, "Error de autenticación");
 
@@ -59,7 +59,7 @@ module.exports = {
           throw createError(400, "No es un id válido")
         }
 
-        const project = await Project.findById(id);
+        const project = await Project.findById(id).populate('tasks');
 
         if (!project) throw createError(401, "Projecto no encontrado");    
 
@@ -93,14 +93,14 @@ module.exports = {
 
         if (req.user._id.toString() !== project.createdBy.toString()) throw createError(401, "No estás autorizado/a");  
 
-        const {name, description, client, dataExpire} = req.body;
+        const {name, description, client, dateExpire} = req.body;
 
       /*   if ([name, description, client].includes("") || !name || !description || !client)  throw createError(400, "Todos los campos son obligatorios"); */
 
         project.name = name || req.body.name;
         project.description = description || req.body.description;
         project.client = client || req.body.client;
-        project.dataExpire = dataExpire || req.body.dataExpire;
+        project.dateExpire = dateExpire || req.body.dateExpire;
 
         const projectUdated = await project.save()
 

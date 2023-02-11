@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-
 const projectSchema = new mongoose.Schema(
   {
     name: {
@@ -13,30 +12,35 @@ const projectSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    dataExpire: {
+    dateExpire: {
       type: Date,
       default: Date.now(),
     },
     client: {
       type: String,
-      required : true,
+      required: true,
       trim: true,
     },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+      ref: "User",
     },
-    collaborators : [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref:'User',
-        }
-    ]
+    collaborators: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+    tasks: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Task",
+      },
+    ],
   },
   {
     timestamps: true,
   }
 );
 
-
-module.exports = mongoose.model('Project', projectSchema)
+module.exports = mongoose.model("Project", projectSchema);

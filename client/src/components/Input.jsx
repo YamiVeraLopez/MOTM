@@ -18,7 +18,7 @@ export const Input = ({id, type, placeholder, value, name, cb, icon, autoComplet
         name={name}
         autoComplete={autoComplete}
         onChange={cb}
-        className="placeholder:italic placeholder:text-violet-300 block bg-white w-full border border-b-violet-700 rounded-r-md py-1 pl-5 pr-3 shadow-sm focus:outline-none  focus:border-purple-500 focus:ring-1 focus:ring-purple-500 sm:text-sm font-serif text-xs text-pink-900"
+        className="placeholder:italic placeholder:text-violet-300 block bg-white w-full border border-b-violet-700 rounded-r-md py-1 pl-5 pr-3 shadow-sm shadow-purple-500 focus:outline-none  focus:border-purple-500 focus:ring-1 focus:ring-purple-500 sm:text-sm font-serif text-xs text-pink-900"
       />
     </div>
   );
